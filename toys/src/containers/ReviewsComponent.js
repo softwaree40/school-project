@@ -2,15 +2,18 @@ import React, { Component } from 'react'
 import { connect } from "react-redux"
 import {getToys} from "../action/toys"
 import {getReviews} from "../action/reviews"
-class   ReviewComponent extends Component {
-    
+import  {Review} from "../components/Review"
+
+// index  review 
+//show review/1
+class ReviewComponent extends Component {
 
     render() {
         let reviewList = []
 
        try {
            if(this.props.toys[this.props.match.params.id].reviews){
-           reviewList = this.props.toys[this.props.match.params.id].reviews.map(review => <h3 key={review.id}>{review.content}</h3>)
+           reviewList = this.props.toys[this.props.match.params.id].reviews.map(review => <Review key={review.id} review={review.content} toy={this.props.toys[this.props.match.params.id]}/>)
            }
        }
        catch(e){
@@ -19,12 +22,18 @@ class   ReviewComponent extends Component {
          
         return (
             <>  
-                {this.props.loading ? <h3>Loading in Progress.......</h3> : 
-                <div>
-                    <h1>{this.props.toys[this.props.match.params.id].name}</h1>
-                    <h2>{this.props.toys[this.props.match.params.id].description}</h2>
-                    {reviewList}
-                    </div>}
+            {this.props.loading ? <h3>Loading in Progress.......</h3> : 
+            <div>
+                <fieldset>
+                  <legend>Toy Name: </legend>
+                    <br/>
+                    {this.props.toys[this.props.match.params.id].name}
+                  <legend>Description: </legend>
+                    {this.props.toys[this.props.match.params.id].description}
+                  <legend>Reviews: </legend>
+                  {reviewList}
+                </fieldset>
+             </div>}
             </>
 
         )

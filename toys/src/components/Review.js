@@ -1,11 +1,12 @@
-// // showing single review attached to toy
-// import React from 'react'
+// showing single review attached to toy
+import React from 'react'
 
-// export const Review = ({toy, review}) => {
+export const Review = (props) => {
  
-//     return (
-       
-//                 <h3>{review}</h3>
-        
-//     )
-// }
+    return (
+       <>
+      <h3>{props.review}</h3>
+      
+       </> 
+    )
+}
