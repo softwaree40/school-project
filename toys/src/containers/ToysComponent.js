@@ -5,7 +5,7 @@ import { getToys, deleteToy } from "../action/toys"
 import { getReviews } from '../action/reviews'
 
 class ToysComponent extends Component {
-
+  
 
     
     componentDidMount() {
